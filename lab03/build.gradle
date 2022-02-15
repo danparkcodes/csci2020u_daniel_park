@@ -14,9 +14,23 @@ dependencies {
     implementation 'org.apache.commons:commons-csv:1.9.0'
 }
 
-application {
-    mainClass = 'lab03.SimpleTest' 
+/* application {
+    mainClass = 'CSVDemo.CSVDemo' 
+} */
+
+mainClassName = 'CSVDemo.CSVDemo'
+version = '1.0'
+
+
+// Lab03: Jar File manifest
+jar {
+    manifest {
+        attributes 'Main-Class': 'mainClassName',
+                    'Implementation-Title': 'Lab03',
+                    'Implementation-Version': version
+    }
 }
+
 
 tasks.named('test') {
     useJUnitPlatform() 
