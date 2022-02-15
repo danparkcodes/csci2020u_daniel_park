@@ -1,0 +1,10 @@
+# Java #
+*.class
+*.jar
+*.war
+*.ear
+*.nar
+
+# Gradle #
+bin/
+build/

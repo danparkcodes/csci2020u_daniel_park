@@ -18,6 +18,7 @@ dependencies {
     mainClass = 'CSVDemo.CSVDemo' 
 } */
 
+//Lab 03: CSV Demo and version to 1.0
 mainClassName = 'CSVDemo.CSVDemo'
 version = '1.0'
 
@@ -31,6 +32,22 @@ jar {
     }
 }
 
+// Lab 03: Proguard for tasks
+buildscript {
+    repositories {
+        flatDir dirs: '../proguard6.2.2/lib'
+    }
+    dependencies {
+        classpath ':proguard:'
+    }
+}
+
+// Lab 03: Minify JAR file
+task(minify, dependsOn: 'jar', type: proguard.gradle.ProGuardTask) {
+    configuration 'proguard.cfg'
+    injars 'build/libs/lab03-1.0.jar'
+    outjars 'build/libs/lab03-1.0.min.jar'
+}
 
 tasks.named('test') {
     useJUnitPlatform() 
