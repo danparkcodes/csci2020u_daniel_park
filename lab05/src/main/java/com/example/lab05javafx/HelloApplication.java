@@ -1,4 +1,4 @@
-package com.example.lab05;
+package com.example.lab05javafx;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
