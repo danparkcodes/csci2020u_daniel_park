@@ -1,0 +1,11 @@
+<info>
+    <student id="100834921">
+        <name>Daniel Park</name>
+        <email>daniel.park@ontariotechu.net </email>
+    </student>
+    <software-description>
+        This JavaFX application is
+        Daniel Park's part II midterm
+        for CSCI2020U winter 2022 course.
+    </software-description>
+</info>
