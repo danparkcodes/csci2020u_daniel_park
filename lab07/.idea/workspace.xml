@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="454bda4f-b1f4-4056-9c17-d27e8312a3fc" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apiguardian_apiguardian_api_1_1_2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apiguardian_apiguardian_api_1_1_2.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab07.iml" beforeDir="false" afterPath="$PROJECT_DIR$/lab07.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/lab07/WeatherApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/lab07/WeatherApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/lab07/PieChartData.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/lab07/PieChartData.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/lab07/WeatherApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/lab07/WeatherApplication.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/lab07/WeatherCSVReader.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/lab07/WeatherCSVReader.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/lab07/weatherwarnings-2015.csv" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/lab07/weatherwarnings-2015.csv" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="26krFJBoCBkVlujfgtuub33JqHr" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\ksdan\Projects\csci2020u_daniel_park\lab07\src\main\resources\com\example\lab07" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="lab07" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="com.example.lab07.WeatherApplication" />
+      <module name="lab07" />
+      <option name="PROGRAM_PARAMETERS" value="--module-path &quot;C:\Users\ksdan\Projects\Libraries\openjfx-17.0.2_windows-x64_bin-sdk\javafx-sdk-17.0.2\lib&quot; --add-modules javafx.controls,javafx.fxml" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="454bda4f-b1f4-4056-9c17-d27e8312a3fc" name="Changes" comment="" />
+      <created>1647978320833</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1647978320833</updated>
+    </task>
+    <servers />
+  </component>
+</project>

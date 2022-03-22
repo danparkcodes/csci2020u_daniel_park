@@ -16,13 +16,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class WeatherApplication extends Application {
-    final double SIZE = 270.0;
-    final double RAIDUS = SIZE / 2.0;
     @Override
     public void start(Stage stage) throws IOException {
-
-        PieChartData pieChartData = new PieChartData();
-        Color[] pieChartColors = pieChartData.getPieColours();
 
         WeatherCSVReader weatherCSVReader = new WeatherCSVReader();
         HashMap<String, Integer> weatherWarnings = weatherCSVReader.parseWarningTypes();
@@ -44,17 +39,7 @@ public class WeatherApplication extends Application {
                 new PieChart.Data(warningsType[2],warningsCount[2]),
                 new PieChart.Data(warningsType[3],warningsCount[3])
         );
-
         pieChart.setData(pieData);
-
-        // set pie chart colors
-        int colIndex = 0;
-        for (PieChart.Data d : pieData) {
-            d.getNode().setStyle(
-                    "-fx-pie-color: " + pieChartColors[colIndex % pieChartColors.length] + ";"
-            );
-            colIndex++;
-        }
         pieChart.setLegendSide(Side.LEFT);
 
         HBox hbox = new HBox(pieChart);
