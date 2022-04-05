@@ -19,7 +19,7 @@ public class CSVProcessor {
     private double averageIncidents00to14;
     public String[] csvColumns = new CSVAirlineRowData().getAllColumns();;
     private LinkedHashMap<String, CSVAirlineRowData> airlineSafetyRecords; // Key is airline name, Value is it's row
-    private HashMap<String,CSVColumnSummaryData> csvColumnSummaryData; // key is column name, value is col summaries
+    private LinkedHashMap<String,CSVColumnSummaryData> csvColumnSummaryData; // key is column name, value is col summaries
 
     public CSVProcessor(String csvFilename) {
         this.csvFilename = csvFilename;
@@ -167,5 +167,8 @@ public class CSVProcessor {
         return airlineSafetyRecords;
     }
 
+    public LinkedHashMap<String, CSVColumnSummaryData> getCsvColumnSummaryData() {
+        return csvColumnSummaryData;
+    }
 }
 

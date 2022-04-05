@@ -17,21 +17,11 @@ public class AirlineSafetyApplication extends Application {
         CSVProcessor csvProcessor= new CSVProcessor("airline_safety.csv");
         csvProcessor.parseCSVData();
 
-        // get and try to print all data from LinkedHashMap
-/*        LinkedHashMap<String,CSVAirlineRowData> csvAirlineData = csvProcessor.getAirlineSafetyRecords();
-        Set<String> keys = csvAirlineData.keySet();
-
-        for (String key: keys) {
-            csvAirlineData.get(key).printAll();
-        }*/
-
-
-        // Process Data = Airline CSV Reader Data
-
         // Write to xml file
         AirlineXMLCreator xmlCreator = new AirlineXMLCreator();
         try {
-            xmlCreator.createAirlineSummaryStatisticsXML();
+            xmlCreator.convertAirlineSafetyCSVtoXML("converted_airline_safety.xml");
+            xmlCreator.createAirlineSummaryStatisticsXML("airline_summary_statistic.xml");
         } catch (Exception e) {
             e.printStackTrace();
         }
