@@ -45,24 +45,12 @@ public class AirlineSafetyApplication extends Application {
         stage.show();
     }
 
-    public static void main(String[] args) {
-        launch();
-    }
-
-
     public void createBarChart (BarChart<String,Number> bc, CategoryAxis xAxis, NumberAxis yAxis, CSVProcessor processor) {
         // TODO
-        /* horizontal or vertical bar chart
-        * x axis has airline name, each airline has two bars
-        * bar1: fatal incidents 85-99
-        * bar2: fatal incidents 00-14
-        *
-        * */
         LinkedHashMap<String,CSVAirlineRowData> airlineSafetyRecords = processor.getAirlineSafetyRecords();
-        bc.setTitle("Airline Safety Statistics (1985-2014)");
+        bc.setTitle("Airline Fatal Incidents (1985-2014)");
         xAxis.setLabel("Airline");
         yAxis.setLabel("Fatal Incidents");
-
 
         // Series 1: fatal incidents 85-99
         // Series 2: fatal incident 00-14
@@ -75,14 +63,17 @@ public class AirlineSafetyApplication extends Application {
             addDataToXYChartSeries(fatalIncidents85to99Series, airlineSafetyRecords, key, 3);
             addDataToXYChartSeries(fatalIncidents00to14Series, airlineSafetyRecords, key, 6);
         }
-
         bc.getData().addAll(fatalIncidents85to99Series,fatalIncidents00to14Series);
-
-
     }
 
     private void addDataToXYChartSeries (XYChart.Series series, LinkedHashMap<String, CSVAirlineRowData> airlineData, String airlineKey, int statIndex){
         series.getData().add(new XYChart.Data(airlineKey, airlineData.get(airlineKey).getStatByIndex(statIndex)));
 
     }
+
+    public static void main(String[] args) {
+        launch();
+    }
+
+
 }
