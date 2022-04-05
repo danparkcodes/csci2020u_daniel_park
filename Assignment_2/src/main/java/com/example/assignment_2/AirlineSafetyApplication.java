@@ -16,6 +16,7 @@ public class AirlineSafetyApplication extends Application {
 
         CSVProcessor csvProcessor= new CSVProcessor("airline_safety.csv");
         csvProcessor.parseCSVData();
+        csvProcessor.appendTotalToCSV();
 
         // Write to xml file
         AirlineXMLCreator xmlCreator = new AirlineXMLCreator();

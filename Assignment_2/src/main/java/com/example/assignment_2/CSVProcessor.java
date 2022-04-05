@@ -1,13 +1,7 @@
 package com.example.assignment_2;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.util.HashMap;
-import java.util.LinkedHashMap;
-import java.util.Scanner;
-import java.util.Set;
+import java.io.*;
+import java.util.*;
 
 public class CSVProcessor {
 
@@ -78,8 +72,6 @@ public class CSVProcessor {
         }
         calculateColumnSummaryStatistics();
         calculateAverageIncidentStatistics();
-        printColumnSummaryStatistics();
-        printAverageIncidentStatistics();
     }
 
     public void calculateColumnSummaryStatistics () {
@@ -137,6 +129,45 @@ public class CSVProcessor {
             total += airlineSafetyRecords.get(key).getStatByIndex(incidents00to14Index);
         }
         averageIncidents00to14 = (total / keys.size());
+    }
+
+    public void appendTotalToCSV () {
+        List<String> lines = new ArrayList<>();
+        try {
+            String line;
+            int keyIndex = 0;
+            FileWriter csvWriter = new FileWriter("filename");
+            BufferedReader csvAirline = new BufferedReader(new FileReader(resourcePath + "airline_safety.csv"));
+            Scanner scanner = new Scanner(csvAirline);
+
+            List<String> keys = new ArrayList<>(airlineSafetyRecords.keySet());
+
+            if (scanner.hasNextLine()) { // scan header row
+                lines.add(scanner.nextLine().trim() + ",total_incidents");
+            }
+
+            while (scanner.hasNextLine()) {
+                line = scanner.nextLine();
+                line = line.trim() + "," + airlineSafetyRecords.get(keys.get(keyIndex)).getTotalIncidents();
+                lines.add(line);
+                keyIndex++;
+            }
+
+            // create buffered writer and wring line
+            FileWriter newFile = new FileWriter(resourcePath + "airline_safety2.csv");
+            BufferedWriter bw = new BufferedWriter(newFile);
+
+            for(String newLine: lines) {
+                bw.write(newLine);
+                bw.newLine();
+                System.out.println(newLine);
+            }
+            bw.close();
+
+
+        } catch (Exception e) {
+            System.out.println("Exception message: " + e.getMessage());
+        }
     }
 
     public void printColumnSummaryStatistics () {
