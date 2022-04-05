@@ -154,17 +154,14 @@ public class CSVProcessor {
             }
 
             // create buffered writer and wring line
-            FileWriter newFile = new FileWriter(resourcePath + "airline_safety2.csv");
+            FileWriter newFile = new FileWriter(resourcePath + "airline_safety.csv");
             BufferedWriter bw = new BufferedWriter(newFile);
 
             for(String newLine: lines) {
                 bw.write(newLine);
                 bw.newLine();
-                System.out.println(newLine);
             }
             bw.close();
-
-
         } catch (Exception e) {
             System.out.println("Exception message: " + e.getMessage());
         }

@@ -12,16 +12,19 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.text.DecimalFormat;
 import java.util.LinkedHashMap;
 import java.util.Set;
 
 public class AirlineXMLCreator {
     private CSVProcessor airlineCSVProcessor;
+    private LinkedHashMap<String,CSVColumnSummaryData> csvColumnSummaryData;
     final String resourcePath = "src/main/resources/com/example/assignment_2/";
 
     AirlineXMLCreator() throws FileNotFoundException {
         this.airlineCSVProcessor = new CSVProcessor("airline_safety.csv");
         airlineCSVProcessor.parseCSVData();
+        this.csvColumnSummaryData = airlineCSVProcessor.getCsvColumnSummaryData();
     }
 
     public void convertAirlineSafetyCSVtoXML(String filename) throws FileNotFoundException {
@@ -96,9 +99,6 @@ public class AirlineXMLCreator {
             StreamResult result = new StreamResult(new File(resourcePath + filename));
             transformer.transform(source, result);
 
-            // Output to console for testing
-/*            StreamResult consoleResult = new StreamResult(System.out);
-            transformer.transform(source, consoleResult);*/
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -113,8 +113,6 @@ public class AirlineXMLCreator {
 
             Element summaryElement = doc.createElement("Summary");
             doc.appendChild(summaryElement);
-
-            LinkedHashMap<String,CSVColumnSummaryData> csvColumnSummaryData= airlineCSVProcessor.getCsvColumnSummaryData();
             Set<String> keys = csvColumnSummaryData.keySet();
             for (String key: keys) {
                 // Stat element
@@ -133,14 +131,49 @@ public class AirlineXMLCreator {
 
                 // Max Element
                 Element maxElement = doc.createElement("Max");
-                maxElement.appendChild(doc.createTextNode(Double.toString(csvColumnSummaryData.get(key).getStatMax())));
+                maxElement.appendChild(doc.createTextNode(new DecimalFormat("#")
+                        .format((csvColumnSummaryData.get(key).getStatMax()))));
                 stat.appendChild(maxElement);
 
                 // Avg Element
                 Element avgElement = doc.createElement("Avg");
-                avgElement.appendChild(doc.createTextNode(Double.toString(csvColumnSummaryData.get(key).getStatAverage())));
+                avgElement.appendChild(doc.createTextNode(new DecimalFormat("#0.0#")
+                        .format((csvColumnSummaryData.get(key).getStatAverage()))));
                 stat.appendChild(avgElement);
             }
+
+            // Incident 85-99
+            // Stat Element
+            Element stat = doc.createElement("Stat");
+            summaryElement.appendChild(stat);
+
+            // Name Element
+            Element nameElement = doc.createElement("Name");
+            nameElement.appendChild(doc.createTextNode(csvColumnSummaryData.get("incidents85to99").getcolumnName()));
+            stat.appendChild(nameElement);
+
+            // Average Element
+            Element avgElement = doc.createElement("Avg");
+            avgElement.appendChild(doc.createTextNode(new DecimalFormat("#0.0#")
+                    .format((csvColumnSummaryData.get("incidents85to99").getStatAverage()))));
+            stat.appendChild(avgElement);
+
+            // Incidents 00-14
+            // Stat Element
+            Element stat2 = doc.createElement("Stat");
+            summaryElement.appendChild(stat2);
+
+            // Name Element
+            Element nameElement2 = doc.createElement("Name");
+            nameElement2.appendChild(doc.createTextNode(csvColumnSummaryData.get("averageIncidents00to14").getcolumnName()));
+            stat2.appendChild(nameElement2);
+
+            // Average Element
+            Element avgElement2 = doc.createElement("Avg");
+            avgElement2.appendChild(doc.createTextNode(new DecimalFormat("#0.0#")
+                    .format((csvColumnSummaryData.get("averageIncidents00to14").getStatAverage()))));
+            stat2.appendChild(avgElement2);
+
 
             // write the content into xml file
             TransformerFactory transformerFactory = TransformerFactory.newInstance();
@@ -149,9 +182,6 @@ public class AirlineXMLCreator {
             StreamResult result = new StreamResult(new File(resourcePath + filename));
             transformer.transform(source, result);
 
-            // Output to console for testing
-/*            StreamResult consoleResult = new StreamResult(System.out);
-            transformer.transform(source, consoleResult);*/
         } catch (Exception e) {
             e.printStackTrace();
         }

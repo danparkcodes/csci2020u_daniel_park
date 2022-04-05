@@ -14,6 +14,7 @@ public class AirlineSafetyApplication extends Application {
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(AirlineSafetyApplication.class.getResource("hello-view.fxml"));
 
+        // Process CSV data, calculate statistics, append totals to csv file
         CSVProcessor csvProcessor= new CSVProcessor("airline_safety.csv");
         csvProcessor.parseCSVData();
         csvProcessor.appendTotalToCSV();
@@ -27,6 +28,7 @@ public class AirlineSafetyApplication extends Application {
             e.printStackTrace();
         }
 
+        // Graph bar chart
 
         Scene scene = new Scene(fxmlLoader.load(), 320, 240);
         stage.setTitle("Hello!");
