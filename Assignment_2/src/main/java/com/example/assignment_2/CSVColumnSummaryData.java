@@ -1,5 +1,10 @@
 package com.example.assignment_2;
-
+/**
+ * Data class that represents summary statistics for a single column
+ * Each column is an airline incident statistic.
+ * Summary statistics include minimum, maximum, and average values for each column
+ * For example: Maximum of (fatalities from 1985-1999)
+ * */
 public class CSVColumnSummaryData {
     private String columnName;
     private long statMin;

@@ -12,7 +12,9 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.LinkedHashMap;
 import java.util.Set;
-
+/**
+ * Main Application, gets parsed data and graphs bar chart
+ */
 public class AirlineSafetyApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
@@ -44,7 +46,11 @@ public class AirlineSafetyApplication extends Application {
         stage.setScene(scene);
         stage.show();
     }
-
+    /**
+     * Creates bar char showing each airline's fatal incidents from 1985-2014
+     * @param bc barchart displaying data
+     * @param processor CSVProcessor containing LinkedHashMap of summary statistics
+     */
     public void createBarChart (BarChart<String,Number> bc, CategoryAxis xAxis, NumberAxis yAxis, CSVProcessor processor) {
         // TODO
         LinkedHashMap<String,CSVAirlineRowData> airlineSafetyRecords = processor.getAirlineSafetyRecords();
@@ -65,7 +71,14 @@ public class AirlineSafetyApplication extends Application {
         }
         bc.getData().addAll(fatalIncidents85to99Series,fatalIncidents00to14Series);
     }
-
+    /**
+     * Adds data to BarChart XYChart.Series
+     * Each XYChart.Data represents an airline's statistics for the given Series stats category
+     * @param series Series for BarChart. Each Series represent one stat type (i.e. fatal incidents 85-99)
+     * @param airlineData contains all airline statistics from .csv file
+     * @param airlineKey name of airline and key for airlineData LinkedHashMap
+     * @param statIndex column index from .csv file, corresponds to column in airlineData
+     */
     private void addDataToXYChartSeries (XYChart.Series series, LinkedHashMap<String, CSVAirlineRowData> airlineData, String airlineKey, int statIndex){
         series.getData().add(new XYChart.Data(airlineKey, airlineData.get(airlineKey).getStatByIndex(statIndex)));
 

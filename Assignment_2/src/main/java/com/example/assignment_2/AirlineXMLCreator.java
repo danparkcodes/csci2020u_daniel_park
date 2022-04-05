@@ -6,7 +6,6 @@ import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
-
 import org.w3c.dom.Attr;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -15,7 +14,10 @@ import java.io.FileNotFoundException;
 import java.text.DecimalFormat;
 import java.util.LinkedHashMap;
 import java.util.Set;
-
+/**
+ * Converts .csv of airline incident data and writes it to .xml
+ * Take column summary stats and writes them to .xml
+ */
 public class AirlineXMLCreator {
     private CSVProcessor airlineCSVProcessor;
     private LinkedHashMap<String,CSVColumnSummaryData> csvColumnSummaryData;
@@ -26,11 +28,13 @@ public class AirlineXMLCreator {
         airlineCSVProcessor.parseCSVData();
         this.csvColumnSummaryData = airlineCSVProcessor.getCsvColumnSummaryData();
     }
-
+    /**
+     * Takes .csv data processed in and stored by CSVProcessor and writes it to new .xml file
+     * @param filename name of .xml file output
+     */
     public void convertAirlineSafetyCSVtoXML(String filename) throws FileNotFoundException {
-        String[] csvColumns = new CSVAirlineRowData().getAllColumns();
-        LinkedHashMap<String, CSVAirlineRowData> csvAirlineSafetyRecords = airlineCSVProcessor.getAirlineSafetyRecords();
-
+        LinkedHashMap<String, CSVAirlineRowData> csvAirlineSafetyRecords
+                = airlineCSVProcessor.getAirlineSafetyRecords();
         try {
             DocumentBuilderFactory dbFactory =
                     DocumentBuilderFactory.newInstance();
@@ -103,7 +107,10 @@ public class AirlineXMLCreator {
             e.printStackTrace();
         }
     }
-
+    /**
+     * Takes column summary statistics from CSVProcessor and writes it to new .xml file
+     * @param filename name of .xml file output
+     */
     public void createAirlineSummaryStatisticsXML (String filename) throws ParserConfigurationException {
         try {
             DocumentBuilderFactory dbFactory =

@@ -1,5 +1,9 @@
 package com.example.assignment_2;
-
+/**
+ * Data class that represents a row of data from airline_safety.csv file
+ * Each row corresponds uniquely to an airline
+ * Each row contains incident statistics for an airline from 1985-2014
+ */
 public class CSVAirlineRowData {
     private String airline;
     private long availSeatKMPerWeek;
@@ -134,16 +138,4 @@ public class CSVAirlineRowData {
         this.totalIncidents = totalIncidents;
     }
 
-    public void printAll () {
-        System.out.println(
-        airline +
-        availSeatKMPerWeek+
-        incidents85to99+
-        fatalAccidents85to99+
-        fatalities85to99+
-        incidents00to14+
-        fatalAccidents00to14+
-        fatalities00to14+
-        totalIncidents);
-    }
 }

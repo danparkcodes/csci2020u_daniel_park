@@ -2,25 +2,39 @@ package com.example.assignment_2;
 
 import java.io.*;
 import java.util.*;
-
+/**
+ * Parses, calculates, summarizes, and stores airline incident data from .csv
+ * Appends .csv file with calculated colum "total incidents"
+ */
 public class CSVProcessor {
 
     private final String resourcePath = "src/main/resources/com/example/assignment_2/";
     private String csvFilename;
     private File inFile;
-
     private double averageIncidents85to99;
     private double averageIncidents00to14;
     public String[] csvColumns = new CSVAirlineRowData().getAllColumns();;
+    /**
+     * Entirety of the .csv file of airline incident statistics
+     * key is name of airline
+     */
     private LinkedHashMap<String, CSVAirlineRowData> airlineSafetyRecords; // Key is airline name, Value is it's row
+    /**
+     * Calculated summary statistics for each column from .csv file of airline incident statistics
+     * key is name of airline
+     */
     private LinkedHashMap<String,CSVColumnSummaryData> csvColumnSummaryData; // key is column name, value is col summaries
+
 
     public CSVProcessor(String csvFilename) {
         this.csvFilename = csvFilename;
         this.airlineSafetyRecords = new LinkedHashMap<String, CSVAirlineRowData>();
         this.csvColumnSummaryData = new LinkedHashMap<String, CSVColumnSummaryData>();
     }
-
+    /**
+     * Parses .csv of airline incident data and stores in LinkedHashMap
+     * Calculates column summary and average statistics
+     */
     public void parseCSVData() throws FileNotFoundException {
         try {
             inFile = new File(resourcePath + csvFilename);
@@ -73,7 +87,10 @@ public class CSVProcessor {
         calculateColumnSummaryStatistics();
         calculateAverageIncidentStatistics();
     }
-
+    /**
+     * Processes csv column summary data
+     * Calculates min, max, and average for each column from .csv and stores in LinkedHashMap
+     */
     private void calculateColumnSummaryStatistics () {
         // Summary stats for each column
         for (int columnInd = 1; columnInd < csvColumns.length; columnInd++) {
@@ -114,7 +131,9 @@ public class CSVProcessor {
             csvColumnSummaryData.put(csvColumns[columnInd],columnSummary);
         }
     }
-
+    /**
+     * Calculates average incident statistics for all airlines
+     */
     private void calculateAverageIncidentStatistics () {
         Set<String> keys = airlineSafetyRecords.keySet();
         double total = 0.0;
@@ -130,7 +149,9 @@ public class CSVProcessor {
         }
         averageIncidents00to14 = (total / keys.size());
     }
-
+    /**
+     * Calculates total incidents for each airline and appends results to .csv
+     */
     public void appendTotalToCSV () {
         List<String> lines = new ArrayList<>();
         try {
@@ -165,22 +186,6 @@ public class CSVProcessor {
         } catch (Exception e) {
             System.out.println("Exception message: " + e.getMessage());
         }
-    }
-
-    private void printColumnSummaryStatistics () {
-        Set<String> keys = csvColumnSummaryData.keySet();
-        for (String key : keys) {
-            System.out.println(csvColumnSummaryData.get(key).getcolumnName());
-            System.out.println(csvColumnSummaryData.get(key).getStatMin());
-            System.out.println(csvColumnSummaryData.get(key).getStatMax());
-            System.out.println(csvColumnSummaryData.get(key).getStatAverage());
-        }
-
-    }
-
-    private void printAverageIncidentStatistics () {
-        System.out.println(averageIncidents00to14);
-        System.out.println(averageIncidents85to99);
     }
 
     public double getAverageIncidents85to99() {
