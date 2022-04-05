@@ -1,6 +1,6 @@
 package com.example.assignment_2;
 
-public class AirlineData {
+public class CSVAirlineRowData {
     private String airline;
     private long availSeatKMPerWeek;
     private long incidents85to99;
@@ -10,10 +10,20 @@ public class AirlineData {
     private long fatalAccidents00to14;
     private long fatalities00to14;
     private long totalIncidents;
+    private String[] allColumns= new String []{
+            "airline",
+            "availSeatKMPerWeek",
+            "incidents85to99",
+            "fatalAccidents85to99",
+            "fatalities85to99",
+            "incidents00to14",
+            "fatalAccidents00to14",
+            "fatalities00to14",
+            "totalIncidents"};
 
-    public AirlineData () {}
+    public CSVAirlineRowData() {}
 
-    public AirlineData(String airline, long availSeatKMPerWeek, long incidents85to99, long fatalAccidents85to99, long fatalities85to99, long incidents00to14, long fatalAccidents00to14, long fatalities00to14, long totalIncidents) {
+    public CSVAirlineRowData(String airline, long availSeatKMPerWeek, long incidents85to99, long fatalAccidents85to99, long fatalities85to99, long incidents00to14, long fatalAccidents00to14, long fatalities00to14, long totalIncidents) {
         this.airline = airline;
         this.availSeatKMPerWeek = availSeatKMPerWeek;
         this.incidents85to99 = incidents85to99;
@@ -25,6 +35,32 @@ public class AirlineData {
         this.totalIncidents = totalIncidents;
     }
 
+    public long getStatByIndex(int index){
+        if (1 == index) {
+            return availSeatKMPerWeek;
+        } else if (2 == index ) {
+            return incidents85to99;
+        } else if (3 == index) {
+            return fatalAccidents85to99;
+        } else if (4 == index ) {
+            return fatalities85to99;
+        } else if (5 == index) {
+            return incidents00to14;
+        } else if (6 == index) {
+            return fatalAccidents00to14;
+        } else if (7 == index) {
+            return fatalities00to14;
+        } else if (8 == index) {
+            return totalIncidents;
+        } else {
+            return 0;
+        }
+    }
+
+    public String getAirline() {
+        return airline;
+    }
+
     public long getAvailSeatKMPerWeek() {
         return availSeatKMPerWeek;
     }
@@ -33,9 +69,6 @@ public class AirlineData {
         return fatalAccidents00to14;
     }
 
-    public String getAirline() {
-        return airline;
-    }
 
     public long getIncidents85to99() {
         return incidents85to99;
@@ -59,6 +92,10 @@ public class AirlineData {
 
     public long getTotalIncidents() {
         return totalIncidents;
+    }
+
+    public String[] getAllColumns () {
+        return  allColumns;
     }
 
     public void setAirline(String airline) {
