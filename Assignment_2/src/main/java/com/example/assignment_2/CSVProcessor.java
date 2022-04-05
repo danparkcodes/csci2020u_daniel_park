@@ -74,7 +74,7 @@ public class CSVProcessor {
         calculateAverageIncidentStatistics();
     }
 
-    public void calculateColumnSummaryStatistics () {
+    private void calculateColumnSummaryStatistics () {
         // Summary stats for each column
         for (int columnInd = 1; columnInd < csvColumns.length; columnInd++) {
             CSVColumnSummaryData columnSummary = new CSVColumnSummaryData();
@@ -115,7 +115,7 @@ public class CSVProcessor {
         }
     }
 
-    public void calculateAverageIncidentStatistics () {
+    private void calculateAverageIncidentStatistics () {
         Set<String> keys = airlineSafetyRecords.keySet();
         double total = 0.0;
         int incidents85to99Index = 2;
@@ -167,7 +167,7 @@ public class CSVProcessor {
         }
     }
 
-    public void printColumnSummaryStatistics () {
+    private void printColumnSummaryStatistics () {
         Set<String> keys = csvColumnSummaryData.keySet();
         for (String key : keys) {
             System.out.println(csvColumnSummaryData.get(key).getcolumnName());
@@ -178,7 +178,7 @@ public class CSVProcessor {
 
     }
 
-    public void printAverageIncidentStatistics () {
+    private void printAverageIncidentStatistics () {
         System.out.println(averageIncidents00to14);
         System.out.println(averageIncidents85to99);
     }

@@ -3,6 +3,10 @@ package com.example.assignment_2;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.chart.BarChart;
+import javafx.scene.chart.CategoryAxis;
+import javafx.scene.chart.NumberAxis;
+import javafx.scene.chart.XYChart;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -29,15 +33,56 @@ public class AirlineSafetyApplication extends Application {
         }
 
         // Graph bar chart
+        final CategoryAxis xAxis = new CategoryAxis();
+        final NumberAxis yAxis = new NumberAxis();
+        final BarChart<String,Number> bc =
+                new BarChart<String,Number>(xAxis,yAxis);
+        createBarChart(bc,xAxis,yAxis, csvProcessor);
 
-        Scene scene = new Scene(fxmlLoader.load(), 320, 240);
-        stage.setTitle("Hello!");
+        Scene scene = new Scene(bc,1200,600);
+        stage.setTitle("Airline Fatal Incidents (1985-2014)");
         stage.setScene(scene);
         stage.show();
     }
 
-
     public static void main(String[] args) {
         launch();
+    }
+
+
+    public void createBarChart (BarChart<String,Number> bc, CategoryAxis xAxis, NumberAxis yAxis, CSVProcessor processor) {
+        // TODO
+        /* horizontal or vertical bar chart
+        * x axis has airline name, each airline has two bars
+        * bar1: fatal incidents 85-99
+        * bar2: fatal incidents 00-14
+        *
+        * */
+        LinkedHashMap<String,CSVAirlineRowData> airlineSafetyRecords = processor.getAirlineSafetyRecords();
+        bc.setTitle("Airline Safety Statistics (1985-2014)");
+        xAxis.setLabel("Airline");
+        yAxis.setLabel("Fatal Incidents");
+
+
+        // Series 1: fatal incidents 85-99
+        // Series 2: fatal incident 00-14
+        XYChart.Series fatalIncidents85to99Series = new XYChart.Series();
+        XYChart.Series fatalIncidents00to14Series = new XYChart.Series();
+        fatalIncidents85to99Series.setName("1985-1999");
+        fatalIncidents00to14Series.setName("2000-2014");
+        Set<String> keys = airlineSafetyRecords.keySet();
+        for(String key: keys) {
+            addDataToXYChartSeries(fatalIncidents85to99Series, airlineSafetyRecords, key, 3);
+            addDataToXYChartSeries(fatalIncidents00to14Series, airlineSafetyRecords, key, 6);
+        }
+
+        bc.getData().addAll(fatalIncidents85to99Series,fatalIncidents00to14Series);
+
+
+    }
+
+    private void addDataToXYChartSeries (XYChart.Series series, LinkedHashMap<String, CSVAirlineRowData> airlineData, String airlineKey, int statIndex){
+        series.getData().add(new XYChart.Data(airlineKey, airlineData.get(airlineKey).getStatByIndex(statIndex)));
+
     }
 }

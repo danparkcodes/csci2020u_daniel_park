@@ -49,11 +49,11 @@
         <Avg>11.3</Avg>
     </Stat>
     <Stat>
-        <Name>incidents85to99</Name>
+        <Name>averageIncidents85to99</Name>
         <Avg>7.18</Avg>
     </Stat>
     <Stat>
-        <Name>incidents00to14</Name>
+        <Name>averageIncidents00to14</Name>
         <Avg>4.12</Avg>
     </Stat>
 </Summary>

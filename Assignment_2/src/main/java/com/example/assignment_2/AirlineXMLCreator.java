@@ -149,7 +149,7 @@ public class AirlineXMLCreator {
 
             // Name Element
             Element nameElement = doc.createElement("Name");
-            nameElement.appendChild(doc.createTextNode(csvColumnSummaryData.get("incidents85to99").getcolumnName()));
+            nameElement.appendChild(doc.createTextNode("averageIncidents85to99"));
             stat.appendChild(nameElement);
 
             // Average Element
@@ -165,13 +165,13 @@ public class AirlineXMLCreator {
 
             // Name Element
             Element nameElement2 = doc.createElement("Name");
-            nameElement2.appendChild(doc.createTextNode(csvColumnSummaryData.get("averageIncidents00to14").getcolumnName()));
+            nameElement2.appendChild(doc.createTextNode("averageIncidents00to14"));
             stat2.appendChild(nameElement2);
 
             // Average Element
             Element avgElement2 = doc.createElement("Avg");
             avgElement2.appendChild(doc.createTextNode(new DecimalFormat("#0.0#")
-                    .format((csvColumnSummaryData.get("averageIncidents00to14").getStatAverage()))));
+                    .format((csvColumnSummaryData.get("incidents00to14").getStatAverage()))));
             stat2.appendChild(avgElement2);
 
 
