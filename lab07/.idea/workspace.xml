@@ -5,6 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="454bda4f-b1f4-4056-9c17-d27e8312a3fc" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../Assignment_2/airline_safety.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Assignment_2/src/main/java/com/example/assignment_2/AirlineSafetyApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Assignment_2/src/main/java/com/example/assignment_2/AirlineSafetyApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Assignment_2/src/main/java/com/example/assignment_2/AirlineXMLCreator.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Assignment_2/src/main/java/com/example/assignment_2/AirlineXMLCreator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Assignment_2/src/main/java/com/example/assignment_2/CSVAirlineRowData.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Assignment_2/src/main/java/com/example/assignment_2/CSVAirlineRowData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Assignment_2/src/main/java/com/example/assignment_2/CSVColumnSummaryData.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Assignment_2/src/main/java/com/example/assignment_2/CSVColumnSummaryData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Assignment_2/src/main/java/com/example/assignment_2/CSVProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Assignment_2/src/main/java/com/example/assignment_2/CSVProcessor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Assignment_2/src/main/resources/com/example/assignment_2/airline_summary_statistic.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Assignment_2/src/main/resources/com/example/assignment_2/converted_airline_safety.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Assignment_2/src/main/resources/com/example/assignment_2/hello-view.fxml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
