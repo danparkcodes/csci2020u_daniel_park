@@ -2,6 +2,8 @@ package com.example.lab05javafx;
 
 import javafx.application.Application;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -14,6 +16,7 @@ import java.io.IOException;
 public class StudentGrades extends Application {
     @Override
     public void start(Stage stage) throws IOException {
+
         // Retrieve student records
         DataSource studentData = new DataSource();
         ObservableList<StudentRecord> studentMarks= studentData.getAllMarks();
@@ -48,24 +51,33 @@ public class StudentGrades extends Application {
 
         for (StudentRecord record: studentMarks) {
             tableview.getItems().add(record);
+            record.getCsvOf_SID_assig_midt_final();
         }
 
-        // Choicebox
 
-        Menu menu1 = new Menu("File");
-        MenuItem menuItem1 = new MenuItem("New");
-        MenuItem menuItem2 = new MenuItem("Open");
-        MenuItem menuItem3 = new MenuItem("Save");
-        MenuItem menuItem4 = new MenuItem("Save As");
-        MenuItem menuItem5 = new MenuItem("Exit");
-        menu1.getItems().add(menuItem1);
-        menu1.getItems().add(menuItem2);
-        menu1.getItems().add(menuItem3);
-        menu1.getItems().add(menuItem4);
-        menu1.getItems().add(menuItem5);
+
+        // Create menu, add menu items
+        Menu file_menu = new Menu("File");
+        MenuItem new_menuItem = new MenuItem("New");
+        MenuItem open_menuItem = new MenuItem("Open");
+        MenuItem save_menuItem = new MenuItem("Save");
+        MenuItem saveAs_menuItem = new MenuItem("Save As");
+        MenuItem exit_menuItem = new MenuItem("Exit");
+        file_menu.getItems().add(new_menuItem);
+        file_menu.getItems().add(open_menuItem);
+        file_menu.getItems().add(save_menuItem);
+        file_menu.getItems().add(saveAs_menuItem);
+        file_menu.getItems().add(exit_menuItem);
 
         MenuBar menuBar = new MenuBar();
-        menuBar.getMenus().add(menu1);
+        menuBar.getMenus().add(file_menu);
+
+        // MenuItem Events
+        new_menuItem.setOnAction(StudentController.newHandler(tableview));
+        open_menuItem.setOnAction(StudentController.open());
+        save_menuItem.setOnAction(StudentController.save(studentMarks));
+        saveAs_menuItem.setOnAction(StudentController.saveAs());
+        exit_menuItem.setOnAction(StudentController.exit());
 
         VBox vbox = new VBox(menuBar,tableview);
         Scene scene = new Scene(vbox);
@@ -77,4 +89,5 @@ public class StudentGrades extends Application {
     public static void main(String[] args) {
         launch();
     }
+
 }

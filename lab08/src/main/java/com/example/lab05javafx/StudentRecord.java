@@ -7,6 +7,7 @@ public class StudentRecord {
     private float finalExam;
     private float finalMark;
     private String LetterGrade;
+    public String currentFilename; // stores currently viewed filename
 
     public StudentRecord(String id, float assignment, float midterm,float finalExam) {
         Student_ID = id;
@@ -26,11 +27,18 @@ public class StudentRecord {
             LetterGrade = "A";
     }
 
-
     public String getStudent_ID() {return Student_ID;}
     public float getMidterm() {return Midterm;}
     public float getAssignments() {return Assignments;}
     public float getFinalExam() {return finalExam;}
     public float getFinalMark() {return finalMark;}
     public String getLetterGrade() {return LetterGrade;}
+
+    public String getCsvOf_SID_assig_midt_final() {
+        String[] csvStrings =
+                {Student_ID,Float.toString(Assignments),Float.toString(Midterm),Float.toString(finalExam)};
+        String joinedCsvString = String.join(",",csvStrings);
+        return joinedCsvString;
+    }
+
 }
