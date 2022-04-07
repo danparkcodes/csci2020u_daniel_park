@@ -7,7 +7,7 @@ public class DataSource {
         ObservableList<StudentRecord> marks =
                 FXCollections.observableArrayList();
         // Student ID, Assignments, Midterm, Final exam
-        marks.add(new StudentRecord("100100100", 75.0f, 68.0f, 54.25f));
+
         marks.add(new StudentRecord("100100101", 70.0f, 69.25f, 51.5f));
         marks.add(new StudentRecord("100100102", 100.0f, 97.0f, 92.5f));
         marks.add(new StudentRecord("100100103", 90.0f, 88.5f, 68.75f));

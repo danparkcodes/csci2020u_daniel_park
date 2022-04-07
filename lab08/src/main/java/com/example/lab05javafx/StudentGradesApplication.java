@@ -75,7 +75,7 @@ public class StudentGradesApplication extends Application {
         new_menuItem.setOnAction(StudentController.newHandler(tableview));
         open_menuItem.setOnAction(StudentController.open(studentMarks,stage,tableview)); // open picker
         save_menuItem.setOnAction(StudentController.save(studentMarks));
-        saveAs_menuItem.setOnAction(StudentController.saveAs());
+        saveAs_menuItem.setOnAction(StudentController.saveAs(studentMarks,stage));
         exit_menuItem.setOnAction(StudentController.exit());
         test_menuItem.setOnAction(test());
 

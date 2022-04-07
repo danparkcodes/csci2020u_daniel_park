@@ -26,6 +26,22 @@ public class StudentController {
         };
     }
 
+    public static void saveToCurrentFilename(ObservableList<StudentRecord> cachedRecords) {
+        // take all Student records data and write to csv
+        try {
+            FileWriter csvWriter = new FileWriter(resourcePath + currentFilename);
+            BufferedWriter bw = new BufferedWriter(csvWriter);
+            for(StudentRecord record: cachedRecords) {
+                bw.write(record.getCsvOf_SID_assig_midt_final());
+                bw.newLine();
+                System.out.println("line that is being saved" + record.getCsvOf_SID_assig_midt_final());
+            }
+            bw.close();
+            System.out.println("Student records saved to: " + currentFilename);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     //Write a function save() that will pull all data from the TableView’s data structure, and save it to
     //the current filename as a CSV file.  This function will save only the following fields:
@@ -33,24 +49,28 @@ public class StudentController {
     //• Assignments
     //• Midterm
     //• Final Exam
-    public static EventHandler<ActionEvent> save(ObservableList<StudentRecord> studentMarks) {
+    public static EventHandler<ActionEvent> save(ObservableList<StudentRecord> cachedRecords) {
         return new EventHandler<ActionEvent>() {
             public void handle(ActionEvent event) {
-                // take all Student records data and write to csv
+                saveToCurrentFilename(cachedRecords);
+            }
+        };
+    }
+
+    public static EventHandler<ActionEvent> saveAs(ObservableList<StudentRecord> cachedRecords, Stage stage) {
+        return new EventHandler<ActionEvent>() {
+            public void handle(ActionEvent event) {
                 try {
-                    FileWriter csvWriter = new FileWriter(resourcePath + currentFilename);
-                    BufferedWriter bw = new BufferedWriter(csvWriter);
-                    for(StudentRecord record: studentMarks) {
-                        bw.write(record.getCsvOf_SID_assig_midt_final());
-                        bw.newLine();
-                    }
-                    bw.close();
-                    System.out.println("Student records saved to: " + currentFilename);
-                } catch (IOException e) {
+                    FileChooser fileChooser = new FileChooser();
+                    fileChooser.setInitialDirectory(new File(resourcePath));
+                    File selectedFile = fileChooser.showOpenDialog(stage);
+                    currentFilename = selectedFile.getName();
+                    System.out.println(currentFilename);
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
-                // save it line by line to csv
-
+                saveToCurrentFilename(cachedRecords);
+                System.out.println("SaveAs is working!");
             }
         };
     }
@@ -62,6 +82,7 @@ public class StudentController {
         try {
             File inFile = new File(resourcePath + currentFilename);
             if (inFile.exists()) {
+                cachedRecords.clear();;
                 // ObservableList<StudentRecord> loadedStudentMarks = FXCollections.observableArrayList();
                 BufferedReader csvWeather = new BufferedReader(new FileReader(inFile));
                 Scanner scanner = new Scanner(csvWeather).useDelimiter(",");
@@ -94,10 +115,10 @@ public class StudentController {
     //when used:
     //• Update the currentFilename variable to the user-selected file’s filename
     //• Call load()
-    public static EventHandler<ActionEvent> open(ObservableList<StudentRecord> cachedRecords, Stage stage, TableView tableview) {
+    public static EventHandler<ActionEvent> open(ObservableList<StudentRecord> cachedRecords, Stage stage, TableView tableView) {
         return new EventHandler<ActionEvent>() {
             public void handle(ActionEvent event) {
-                System.out.println("Oepn is working!");
+                System.out.println("Open is working!");
                 try {
                     FileChooser fileChooser = new FileChooser();
                     fileChooser.setInitialDirectory(new File(resourcePath));
@@ -106,15 +127,8 @@ public class StudentController {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-                load(cachedRecords,tableview);
-            }
-        };
-    }
-
-    public static EventHandler<ActionEvent> saveAs() {
-        return new EventHandler<ActionEvent>() {
-            public void handle(ActionEvent event) {
-                System.out.println("SaveAs is working!");
+                tableView.getItems().clear();
+                load(cachedRecords,tableView);
             }
         };
     }
