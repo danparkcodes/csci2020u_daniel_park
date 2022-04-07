@@ -60,13 +60,11 @@ public class StudentGradesApplication extends Application {
         MenuItem save_menuItem = new MenuItem("Save");
         MenuItem saveAs_menuItem = new MenuItem("Save As");
         MenuItem exit_menuItem = new MenuItem("Exit");
-        MenuItem test_menuItem = new MenuItem("Test");
         file_menu.getItems().add(new_menuItem);
         file_menu.getItems().add(open_menuItem);
         file_menu.getItems().add(save_menuItem);
         file_menu.getItems().add(saveAs_menuItem);
         file_menu.getItems().add(exit_menuItem);
-        file_menu.getItems().add(test_menuItem);
 
         MenuBar menuBar = new MenuBar();
         menuBar.getMenus().add(file_menu);
@@ -77,7 +75,6 @@ public class StudentGradesApplication extends Application {
         save_menuItem.setOnAction(StudentController.save(studentMarks));
         saveAs_menuItem.setOnAction(StudentController.saveAs(studentMarks,stage));
         exit_menuItem.setOnAction(StudentController.exit());
-        test_menuItem.setOnAction(test());
 
         VBox vbox = new VBox(menuBar,tableview);
         Scene scene = new Scene(vbox);
