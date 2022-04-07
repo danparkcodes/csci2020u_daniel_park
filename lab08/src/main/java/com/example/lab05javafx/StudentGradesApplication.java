@@ -4,7 +4,6 @@ import javafx.application.Application;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
@@ -13,13 +12,14 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class StudentGrades extends Application {
+public class StudentGradesApplication extends Application {
+    static ObservableList<StudentRecord> studentMarks;
     @Override
     public void start(Stage stage) throws IOException {
 
         // Retrieve student records
         DataSource studentData = new DataSource();
-        ObservableList<StudentRecord> studentMarks= studentData.getAllMarks();
+        studentMarks= studentData.getAllMarks();
 
         TableView tableview = new TableView();
 
@@ -48,13 +48,10 @@ public class StudentGrades extends Application {
         tableview.getColumns().add(Final_mark_column);
         tableview.getColumns().add(Letter_grade_column);
 
-
+        // add records to tableview
         for (StudentRecord record: studentMarks) {
             tableview.getItems().add(record);
-            record.getCsvOf_SID_assig_midt_final();
         }
-
-
 
         // Create menu, add menu items
         Menu file_menu = new Menu("File");
@@ -63,21 +60,24 @@ public class StudentGrades extends Application {
         MenuItem save_menuItem = new MenuItem("Save");
         MenuItem saveAs_menuItem = new MenuItem("Save As");
         MenuItem exit_menuItem = new MenuItem("Exit");
+        MenuItem test_menuItem = new MenuItem("Test");
         file_menu.getItems().add(new_menuItem);
         file_menu.getItems().add(open_menuItem);
         file_menu.getItems().add(save_menuItem);
         file_menu.getItems().add(saveAs_menuItem);
         file_menu.getItems().add(exit_menuItem);
+        file_menu.getItems().add(test_menuItem);
 
         MenuBar menuBar = new MenuBar();
         menuBar.getMenus().add(file_menu);
 
         // MenuItem Events
         new_menuItem.setOnAction(StudentController.newHandler(tableview));
-        open_menuItem.setOnAction(StudentController.open());
+        open_menuItem.setOnAction(StudentController.open(studentMarks,stage,tableview)); // open picker
         save_menuItem.setOnAction(StudentController.save(studentMarks));
         saveAs_menuItem.setOnAction(StudentController.saveAs());
         exit_menuItem.setOnAction(StudentController.exit());
+        test_menuItem.setOnAction(test());
 
         VBox vbox = new VBox(menuBar,tableview);
         Scene scene = new Scene(vbox);
@@ -86,6 +86,19 @@ public class StudentGrades extends Application {
         stage.show();
     }
 
+    public static EventHandler<ActionEvent> test() {
+        return new EventHandler<ActionEvent>() {
+            public void handle(ActionEvent event) {
+                // see if pass by reference worked in Controller event handler
+                // try to print out the studentRecord obersvable list after trying to clear it from Controller metho
+                for(StudentRecord record: studentMarks) {
+                    System.out.println(record.getCsvOf_SID_assig_midt_final());
+                }
+                System.out.println("Testing!");
+
+            }
+        };
+    }
     public static void main(String[] args) {
         launch();
     }
