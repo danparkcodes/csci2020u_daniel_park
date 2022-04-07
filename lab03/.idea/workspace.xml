@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="454bda4f-b1f4-4056-9c17-d27e8312a3fc" name="Changes" comment="">
+    <list default="true" id="7203df62-bafa-4240-a821-36f09925ee6c" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/../Assignment_2/Assignment_2.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../Assignment_2/Assignment_2.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Assignment_2/src/main/java/com/example/assignment_2/AirlineSafetyApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Assignment_2/src/main/java/com/example/assignment_2/AirlineSafetyApplication.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Assignment_2/src/main/resources/com/example/assignment_2/airline_safety.csv" beforeDir="false" afterPath="$PROJECT_DIR$/../Assignment_2/src/main/resources/com/example/assignment_2/airline_safety.csv" afterDir="false" />
@@ -15,22 +15,22 @@
       <change beforePath="$PROJECT_DIR$/../Assignment_2/target/classes/com/example/assignment_2/CSVProcessor.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Assignment_2/target/classes/com/example/assignment_2/CSVProcessor.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Assignment_2/target/classes/com/example/assignment_2/airline_safety.csv" beforeDir="false" afterPath="$PROJECT_DIR$/../Assignment_2/target/classes/com/example/assignment_2/airline_safety.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Assignment_2/target/classes/com/example/assignment_2/hello-view.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../midtermpart2/.idea/libraries/lib.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../midtermpart2/midtermpart2.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../midtermpart2/midtermpart2.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab07/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../lab07/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
-  <component name="MarkdownSettingsMigration">
-    <option name="stateVersion" value="1" />
-  </component>
-  <component name="ProjectId" id="26krFJBoCBkVlujfgtuub33JqHr" />
+  <component name="ProjectId" id="27OcbY5QAHuqHxllyjnaux5Dc2i" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -39,47 +39,17 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="exceleditor.install" value="true" />
-    <property name="project.structure.last.edited" value="Modules" />
-    <property name="project.structure.proportion" value="0.15" />
-    <property name="project.structure.side.proportion" value="0.38275862" />
-  </component>
-  <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\ksdan\Projects\csci2020u_daniel_park\lab07\src\main\resources\com\example\lab07" />
-    </key>
-  </component>
-  <component name="RunManager">
-    <configuration name="lab07" type="Application" factoryName="Application">
-      <option name="MAIN_CLASS_NAME" value="com.example.lab07.WeatherApplication" />
-      <module name="lab07" />
-      <option name="PROGRAM_PARAMETERS" value="--module-path &quot;C:\Users\ksdan\Projects\Libraries\openjfx-17.0.2_windows-x64_bin-sdk\javafx-sdk-17.0.2\lib&quot; --add-modules javafx.controls,javafx.fxml" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="454bda4f-b1f4-4056-9c17-d27e8312a3fc" name="Changes" comment="" />
-      <created>1647978320833</created>
+      <changelist id="7203df62-bafa-4240-a821-36f09925ee6c" name="Changes" comment="" />
+      <created>1649194645708</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1647978320833</updated>
+      <updated>1649194645708</updated>
     </task>
     <servers />
-  </component>
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State />
-          </value>
-        </entry>
-      </map>
-    </option>
   </component>
 </project>

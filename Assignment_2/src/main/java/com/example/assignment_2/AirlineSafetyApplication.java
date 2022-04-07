@@ -28,6 +28,8 @@ public class AirlineSafetyApplication extends Application {
         // Write to xml file
         AirlineXMLCreator xmlCreator = new AirlineXMLCreator();
         try {
+
+
             xmlCreator.convertAirlineSafetyCSVtoXML("converted_airline_safety.xml");
             xmlCreator.createAirlineSummaryStatisticsXML("airline_summary_statistic.xml");
         } catch (Exception e) {
